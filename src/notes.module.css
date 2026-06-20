@@ -1,0 +1,161 @@
+/* notes.module.css */
+
+.wrapper {
+  min-height: 100vh;
+  background: #f5f6fa;
+  padding: 3rem 1rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 900px;
+  margin: 0 auto 2rem;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 500;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.createBtn {
+  height: 40px;
+  padding: 0 1.25rem;
+  border-radius: 10px;
+  border: none;
+  background: #185fa5;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    transform 0.1s;
+  white-space: nowrap;
+}
+
+.createBtn:hover {
+  background: #1470c0;
+}
+
+.createBtn:active {
+  transform: scale(0.96);
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Note card */
+.noteCard {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.15s;
+}
+
+.noteCard:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.09);
+}
+
+/* Card top bar */
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.noteLabel {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #aaa;
+}
+
+.deleteBtn {
+  height: 28px;
+  padding: 0 0.65rem;
+  border-radius: 7px;
+  border: 1px solid rgba(163, 45, 45, 0.2);
+  background: transparent;
+  color: #a32d2d;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    transform 0.1s;
+}
+
+.deleteBtn:hover {
+  background: #fcebeb;
+}
+
+.deleteBtn:active {
+  transform: scale(0.96);
+}
+
+/* Textarea */
+.textarea {
+  width: 100%;
+  min-height: 160px;
+  padding: 0.75rem;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: #f9f9f9;
+  font-size: 14px;
+  color: #1a1a1a;
+  line-height: 1.6;
+  resize: vertical;
+  outline: none;
+  font-family: inherit;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
+  box-sizing: border-box;
+}
+
+.textarea:focus {
+  border-color: rgba(24, 95, 165, 0.4);
+  box-shadow: 0 0 0 3px rgba(24, 95, 165, 0.08);
+  background: #fff;
+}
+
+.textarea::placeholder {
+  color: #bbb;
+}
+
+/* Char count */
+.charCount {
+  font-size: 11px;
+  color: #bbb;
+  text-align: right;
+}
+
+/* Empty state */
+.emptyState {
+  max-width: 900px;
+  margin: 4rem auto 0;
+  text-align: center;
+  color: #bbb;
+  font-size: 14px;
+}
+
+.emptyIcon {
+  font-size: 36px;
+  margin-bottom: 0.75rem;
+}
