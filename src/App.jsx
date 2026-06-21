@@ -1,11 +1,17 @@
-import { Alert } from "./Alert";
-import { Like } from "./Like";
-import { ShowHide } from "./ShowHide";
+import { ShoppingCart } from "./ShoppingCart";
+// import { Todo } from "./Todo";
 
 function App() {
+  const products = [
+    { id: 1, name: "Laptop", price: 50000 },
+    { id: 2, name: "Mouse", price: 500 },
+    { id: 3, name: "Keyboard", price: 1500 },
+  ];
   return (
     <>
-      <Like />
+      <ShoppingCart products={products} />
+      {/* <Todo /> */}
+      {/* <Like /> */}
       {/* <ShowHide /> */}
       {/* <Alert type="success">Profile updated successfully</Alert>
       <Alert type="error">Profile updated successfully</Alert> */}
