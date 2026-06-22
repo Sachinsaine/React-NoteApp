@@ -1,15 +1,18 @@
-import { ShoppingCart } from "./ShoppingCart";
+import { CounterWithReducer } from "./CounterWithReducer";
+import { ShoppingCartWithReducer } from "./ShoppingCartWithReducer";
+// import { ShoppingCart } from "./ShoppingCart";
 // import { Todo } from "./Todo";
 
 function App() {
-  const products = [
-    { id: 1, name: "Laptop", price: 50000 },
-    { id: 2, name: "Mouse", price: 500 },
-    { id: 3, name: "Keyboard", price: 1500 },
-  ];
+  // const products = [
+  //   { id: 1, name: "Laptop", price: 50000 },
+  //   { id: 2, name: "Mouse", price: 500 },
+  //   { id: 3, name: "Keyboard", price: 1500 },
+  // ];
   return (
     <>
-      <ShoppingCart products={products} />
+      <ShoppingCartWithReducer />
+      {/* <ShoppingCart products={products} /> */}
       {/* <Todo /> */}
       {/* <Like /> */}
       {/* <ShowHide /> */}
