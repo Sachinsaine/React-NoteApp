@@ -1,72 +1,50 @@
 import { useReducer } from "react";
 
-const initialState = {
-  count: 0,
-  step: 1,
-};
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case "increment":
-      return {
-        ...state,
-        count: state.count + state.step,
-      };
-
-    case "decrement":
-      return {
-        ...state,
-        count: state.count - state.step,
-      };
-
-    case "setStep":
-      return {
-        ...state,
-        step: action.payload,
-      };
-
-    case "reset":
-      return {
-        ...initialState,
-      };
-
-    default:
-      return state;
-  }
-};
-
 export const ShoppingCartWithReducer = () => {
-  const [state, dispatch] = useReducer(reducer, initialState);
-
+  let initialValue = {
+    count: 0,
+    step: 1,
+  };
+  const reducer = (state, action) => {
+    switch (action.type) {
+      case "increment":
+        return { ...state, count: state.count + state.step };
+      case "decrement":
+        return { ...state, count: state.count - state.step };
+      case "setstep":
+        return { ...state, step: action.payload };
+      case "reset":
+        return { ...initialValue };
+      default:
+        return state;
+    }
+  };
+  const [state, dispatch] = useReducer(reducer, initialValue);
   return (
     <div>
-      <h2>Counter with Step</h2>
-
-      <h3>
-        Count: {state.count} | Step: {state.step}
-      </h3>
-
+      <h1>useReducer </h1>
+      <h2>
+        Count: {state.count} | Steps: {state.step}{" "}
+      </h2>
       <div>
-        <label>Step Value: </label>
+        Setstep:{" "}
         <input
           type="number"
           value={state.step}
           onChange={(e) =>
-            dispatch({
-              type: "setStep",
-              payload: Number(e.target.value),
-            })
+            dispatch({ type: "setstep", payload: Number(e.target.value) })
           }
         />
       </div>
-
-      <br />
-
-      <button onClick={() => dispatch({ type: "increment" })}>Increment</button>
-
-      <button onClick={() => dispatch({ type: "decrement" })}>Decrement</button>
-
-      <button onClick={() => dispatch({ type: "reset" })}>Reset</button>
+      <div>
+        <button onClick={() => dispatch({ type: "increment" })}>
+          Increment
+        </button>
+        <button onClick={() => dispatch({ type: "decrement" })}>
+          Decrement
+        </button>
+        <button onClick={() => dispatch({ type: "reset" })}>Reset</button>
+      </div>
     </div>
   );
 };

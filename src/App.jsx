@@ -1,5 +1,7 @@
-import { CounterWithReducer } from "./CounterWithReducer";
-import { ShoppingCartWithReducer } from "./ShoppingCartWithReducer";
+// import { CounterWithReducer } from "./CounterWithReducer";
+// import { ShoppingCartWithReducer } from "./ShoppingCartWithReducer";
+import { TodoListWithReducer } from "./TodoListWithReducer";
+// import { ToggleWithReducer } from "./ToggleWithUseReducer";
 // import { ShoppingCart } from "./ShoppingCart";
 // import { Todo } from "./Todo";
 
@@ -11,7 +13,9 @@ function App() {
   // ];
   return (
     <>
-      <ShoppingCartWithReducer />
+      <TodoListWithReducer />
+      {/* <ToggleWithReducer /> */}
+      {/* <ShoppingCartWithReducer /> */}
       {/* <ShoppingCart products={products} /> */}
       {/* <Todo /> */}
       {/* <Like /> */}
