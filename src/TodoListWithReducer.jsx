@@ -1,43 +1,55 @@
 import { useReducer } from "react";
 
 let initialValue = {
-  task: "",
-  todos: [],
+  input: "",
+  tasks: [],
 };
-
 const reducer = (state, action) => {
   switch (action.type) {
-    case "input":
-      return { ...state, task: action.payload };
-    case "addtask":
+    case "inputText":
+      return { ...state, input: action.payload };
+    case "add":
+      return { ...state, tasks: [...state.tasks, state.input], input: " " };
+    case "remove":
       return {
         ...state,
-        todos: [...state.todos, state.task],
-        task: "",
+        tasks: state.tasks.filter((task, index) => index !== action.payload),
       };
     default:
       return state;
   }
 };
-
 export const TodoListWithReducer = () => {
-  const [todo, dispatch] = useReducer(reducer, initialValue);
+  const [state, dispatch] = useReducer(reducer, initialValue);
   return (
     <div>
       <h1>ToDo list with useReducer</h1>
       <div>
         <input
           type="text"
-          placeholder="Enter your task"
-          onChange={(e) => dispatch({ type: "input", payload: e.target.value })}
+          placeholder="enter your task..."
+          value={state.input}
+          onChange={(e) =>
+            dispatch({ type: "inputText", payload: e.target.value })
+          }
         />
-        <button onClick={() => dispatch({ type: "addtask" })}>Add</button>
+        <button
+          disabled={!state.input.trim()}
+          onClick={() => dispatch({ type: "add" })}
+        >
+          Add
+        </button>
       </div>
       <div>
-        {todo.todos.map((todo, index) => {
+        {state.tasks.map((todo, index) => {
           return (
             <div key={index}>
-              <div>{todo}</div>
+              <span>{todo}</span>
+              <button
+                onClick={() => dispatch({ type: "remove", payload: index })}
+              >
+                remove
+              </button>
             </div>
           );
         })}
