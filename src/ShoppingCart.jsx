@@ -1,51 +1,71 @@
-import { useState } from "react";
+import { useReducer } from "react";
 
 export const ShoppingCart = ({ products }) => {
-  //   const [product, setProduct] = useState(products);
-  const product = products;
-  const [cart, setCart] = useState([]);
-  const handleCart = (e) => {
-    setCart([...cart, e]);
+  let initialValue = {
+    cart: [],
+    product: [...products],
   };
-  let total = cart.reduce((acc, curr) => acc + curr.price, 0);
 
-  const handleRemove = (i) => {
-    setCart(cart.filter((item) => item.id !== i));
+  const reducer = (state, action) => {
+    switch (action.type) {
+      case "add":
+        return {
+          ...state,
+          cart: [...state.cart, action.payload],
+        };
+      case "remove":
+        return {
+          ...state,
+          cart: [
+            ...state.cart.filter((item, index) => index !== action.payload),
+          ],
+        };
+      default:
+        state;
+    }
   };
+
+  const [state, dispatch] = useReducer(reducer, initialValue);
+  let total = state.cart.reduce((acc, curr) => acc + curr.price, 0);
   return (
     <div>
       <h1>Shopping Cart</h1>
-
       <div>
-        {product.map((item, index) => {
+        {" "}
+        {state.product.map((product, index) => {
           return (
             <div key={index}>
+              <span>
+                {product.name} - {product.price}
+              </span>
+              <button
+                onClick={() => dispatch({ type: "add", payload: product })}
+              >
+                Add to cart
+              </button>
+            </div>
+          );
+        })}
+        <h1 style={{ marginTop: "20px" }}>Your cart - {state.cart.length}</h1>
+        {state.cart.length === 0 ? (
+          <div>your cart is empty!</div>
+        ) : (
+          state.cart.map((item, index) => {
+            return (
               <div>
-                {" "}
-                {item.name} - ${item.price}{" "}
-                <button onClick={() => handleCart(item)}>Add to cart</button>
+                <div>
+                  {item.name} - ${item.price}
+                  <button
+                    onClick={() => dispatch({ type: "remove", payload: index })}
+                  >
+                    Remove
+                  </button>
+                </div>
               </div>
-            </div>
-          );
-        })}
-      </div>
-
-      <h2>Your cart</h2>
-      <div>
-        Your Cart-{cart.length === 0 ? "Your cart is empty" : cart.length}{" "}
-      </div>
-      <div>Total Price: {total} </div>
-      <div>
-        {cart.map((p) => {
-          return (
-            <div>
-              <h5>
-                {p.name} - ${p.price}
-              </h5>
-              <button onClick={() => handleRemove(p.id)}>Remove</button>
-            </div>
-          );
-        })}
+            );
+          })
+        )}
+        <h1>Total Amount: {total} </h1>
       </div>
     </div>
   );
