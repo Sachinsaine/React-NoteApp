@@ -1,7 +1,6 @@
 import { createContext } from "react";
 
 export const UserContext = createContext({
-  name: "Ronnie",
-  role: "HR",
-  theme: "light",
+  user: { name: "Reena", role: "writer", theme: "light" },
+  setUser: () => {},
 });

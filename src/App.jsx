@@ -1,6 +1,5 @@
-import { useState } from "react";
 import { Header } from "./Header";
-import { UserContext } from "./UserContext";
+import { UserContextProvider } from "./UserContextProvider";
 
 function App() {
   // const products = [
@@ -8,21 +7,12 @@ function App() {
   //   { id: 2, name: "Mouse", price: 500 },
   //   { id: 3, name: "Keyboard", price: 1500 },
   // ];
-  const [user, setUser] = useState({
-    name: "Bruce wayne",
-    role: "admin",
-    theme: "dark",
-  });
 
-  let contextValue = {
-    user,
-    setUser,
-  };
   return (
     <>
-      <UserContext value={contextValue}>
+      <UserContextProvider>
         <Header />
-      </UserContext>
+      </UserContextProvider>
       {/* <ShoppingCart products={products} /> */}
       {/* <TodoListWithReducer /> */}
       {/* <ToggleWithReducer /> */}
