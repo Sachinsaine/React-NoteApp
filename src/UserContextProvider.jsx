@@ -3,7 +3,7 @@ import { UserContext } from "./UserContext";
 
 export const UserContextProvider = ({ children }) => {
   const [user, setUser] = useState({
-    name: "Drake",
+    name: "Virat kohli",
     role: "User",
     theme: "Dark",
   });
